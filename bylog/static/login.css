@@ -1,0 +1,75 @@
+@import url(./basic_default.css);
+@import url(./header.css);
+@import url(./error.css);
+
+.papa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-color: rgb(227, 253, 253);
+}
+
+.mama {
+    border: 2px outset rgba(31, 115, 184, 0.619);
+    width: 500px;
+    padding: 50px;
+    box-shadow: 2px 3px 5px 0px rgba(31, 115, 184, 0.82);
+    border-radius: 3%;
+}
+
+.headline {
+    font-weight: bold;
+    color: rgba(7, 50, 84, 0.775);
+    font-size: 35px;
+    text-align: center;
+}
+
+.flex1 {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-around;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.flexop {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}
+
+.flex2 {
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.flexop2 {
+    border-radius: 2%;
+    width: 120px;  
+}
+
+.sign {
+    color: black;
+}
+
+input, button, a {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+input, div a, div button {
+    border: 2px outset rgba(31, 115, 184, 0.619);
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div a {
+    font-size: 12px;
+}

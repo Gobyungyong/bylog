@@ -1,0 +1,19 @@
+<header>
+    <h1>
+        <a class="header__homelink" href="{{url_for('main.index')}}">
+            <span class="header__logo">BYlog</span>
+        </a>
+    </h1>
+    <nav class="header__nav">
+        <ul>
+            {%if user%}
+                <li class="header__nav_item">
+                    <a href="{{url_for('main.redirecting',id=user.id)}}">이동하기</a>
+                </li>
+            {%endif%}    
+            <li class="header__nav_item">
+                <a href="{{ url_for('auth.logout')}}">로그아웃</a>
+            </li>
+        </ul>
+    </nav>
+</header>   

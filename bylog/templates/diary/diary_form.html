@@ -1,0 +1,29 @@
+{%extends 'base2.html'%}
+{%block content%}
+    <div class="papaform">
+        <h1 class="diaryform_h1">Development Diary</h1>
+        <div class="container_diaryform">
+            <form method="post" class="diary_form">
+                {{ form.csrf_token }}
+                {%include 'form_errors.html'%}
+                <div>
+                    <label for="subject">제목</label>
+                    <input type="text" name="subject" id="subject" value="{{form.subject.data or ''}}">
+                </div>
+                <div>공개여부
+                    <select name="private" id="private">
+                        <option value="공개">공개</option>
+                        <option value="비공개">비공개</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="content"></label>
+                    <textarea name="content" id="diary_content" rows="30">{{form.content.data or ''}}</textarea>
+                </div>
+                <div class="diary_submit_">    
+                <button class="diary_submit_btn" type="submit">등록하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,180 @@
+{%extends 'base2.html'%}
+{%block content%}
+
+        <div class="board">
+
+            <!-- Development Diary -->
+            <h1 class="board_h1">
+                <span class="empty"></span>
+                <span class="h1_">Development Diary</span>
+            {%if user.id == session['user_id']%}
+                <span class="plus"><a href="{{ url_for('diary.create', user_id=user.id) }}"> + </a></span>
+            {%else%}
+                <span class="empty"></span>
+            {%endif%}
+            </h1>
+
+            <!-- 게시글 목록 -->
+            <div class="boardlist">
+                <table class="diary_table">
+                    {%if diary.total > 0%}
+                        <tr class="table_top">
+                            <th class="empty_span"> <!--네이버 카페랑 비슷하게 디자인--></th>
+                            <th>제목</th>
+                            <th class="diary_create_date">작성일시</th>
+                        </tr>
+                    {%for diary_list in diary.items%}
+                    {%if diary_list.private=='공개'%}
+                        <tr class="each_diary">
+                            <td class="diary_number">
+                                {{ diary.total - ((diary.page-1) * diary.per_page) - loop.index0 }}
+                            </td>
+                            
+                            <td class="diary_subject">
+                                <a href="{{url_for('diary.detail', diary_id = diary_list.id)}}">
+                                    {{diary_list.subject}}
+                                </a>
+                                {%if diary_list.comment_set|length > 0%}
+                                <span class="commentNumber">[{{diary_list.comment_set|length}}]</span>
+                                {%endif%}
+                            </td>
+                            
+                            <td class="diary_date">
+                                {{ diary_list.create_date|date }}
+                            </td>
+                        </tr>
+                    {%else%}
+                        {%if user.id == session['user_id']%}
+                            <tr class="each_diary">
+                                <td class="diary_number">
+                                    {{ diary.total - ((diary.page-1) * diary.per_page) - loop.index0 }}
+                                </td>
+                                
+                                <td class="diary_subject">
+                                    <a href="{{url_for('diary.detail', diary_id = diary_list.id)}}">
+                                        {{diary_list.subject}}
+                                    </a>
+                                    {%if diary_list.comment_set|length > 0%}
+                                    <span class="commentNumber">[{{diary_list.comment_set|length}}]</span>
+                                    {%endif%}
+                                </td>
+                                
+                                <td class="diary_date">
+                                    {{ diary_list.create_date|date }}
+                                </td>
+                            </tr>
+                        {%endif%}
+                    {%endif%}
+                    {%endfor%}
+                {%else%}
+                    <br/>
+                    <tr class="each_diary"><td></td><td class="diary_subject">아직 게시글이 없습니다.</td><td></td></tr>
+                {%endif%}      
+                </table>
+            </div>
+
+            <!--페이지처리-->
+            <div class="page_box">
+                <ul class="paging">
+                    {% if diary.has_prev %}
+                        <li>
+                            <a class="page-link" href="?page={{ diary.prev_num }}">이전</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page_num in diary.iter_pages() %}
+                        {% if page_num %}
+                            {% if page_num != diary.page %}
+                            <li>
+                                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                            </li>
+                            {% else %}
+                            <li aria-current="page">
+                                <a class="page-link  current_page" href="javascript:void(0)">{{ page_num }}</a>
+                            </li>
+                            {% endif %}
+                        {% else %}
+                            <li class="disabled">
+                                <a class="page-link" href="javascript:void(0)">...</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                
+                    {% if diary.has_next %}
+                        <li>
+                            <a class="page-link" href="?page={{ diary.next_num }}">다음</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">다음</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            
+            <!-- 검색창 -->
+            <div class="search">
+                <input type="text" id="search_kw" value="{{kw or ''}}" placeholder="제목 또는 내용을 입력하세요"/>
+                <button class="btn" type="button" id="btn_search">검색</button>
+            </div>
+        </div>
+
+        <!--방명록-->
+        <div class="visit">
+            <h1 class="visit_h1">Guest Book</h1>
+            <form method="post" class="visit_form">
+                {{ form.csrf_token }}
+                {% include 'form_errors.html' %}
+                <div class="visit_content">
+                    <label for="content"></label>
+                    <textarea name="content" id="content" rows="10" placeholder="{{user.username}}의 BYlog에 오신 것을 환영합니다. 방명록을 남겨주세요!"></textarea>
+                    <button type="submit" class="visit_btn">등록하기</button>
+                </div>    
+            </form>
+            <div class="scroll_box">
+                {%if guest.count()>0%}
+                    <ul class="guest_content_list">
+                    {%for guest_list in guest%}
+                        <li class="guest_content">
+                            <span class="guest_name">{{guest_list.user_name}}</span>
+                            <span>{{guest_list.create_date|datetime}}</span>
+                            {%if g.user.id == id or g.user.id == 1 or g.user.id == guest_list.user_id %}
+                                <button class="guest_delete"><a href="{{url_for('main.delete',guest_id=guest_list.id)}}">삭제</a></button>
+                            {%endif%}
+                            <div>{{guest_list.content}}</div>
+                        </li>
+                    {%endfor%}
+                    </ul>
+                {%endif%}
+            </div>
+        </div>
+
+        <!--검색폼 hidden-->
+        <form id="searchForm" method="get">
+            <input type="hidden" id="kw" name="kw" value="{{ kw or '' }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+        </form>
+{%endblock%}
+
+{%block script%}
+        <!--검색js-->
+    <script type='text/javascript'>
+        const page_elements = document.getElementsByClassName("page-link");
+        Array.from(page_elements).forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.getElementById('page').value = this.dataset.page;
+                document.getElementById('searchForm').submit();
+            });
+        });
+        const btn_search = document.getElementById("btn_search");
+        btn_search.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;
+            document.getElementById('searchForm').submit();
+        });
+    </script>
+{%endblock%}

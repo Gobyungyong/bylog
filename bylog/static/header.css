@@ -1,0 +1,157 @@
+header {
+    position: sticky;
+    display: flex;
+    z-index: 2;
+    /* top: 72px; */
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(161, 217, 222);
+    min-height: 10vh;
+    width: 100%;
+}
+
+.header__homelink {
+    display: inline-block;
+    padding: 0 2.4rem;
+    height: 7.2rem;
+    line-height: 7.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+}
+
+.header__logo {
+    height: 7.2rem;
+    vertical-align: center;
+    margin-bottom: 0.4rem;
+    color: white;
+    display: inline-block;
+}
+
+/* .header__nav {
+    position: relative;
+    left: 25%;
+} */
+
+.header__nav_item {
+    font-size: 2rem;
+    display: inline-block;
+    position: relative;
+}
+
+.header__nav_item:last-child {
+    margin-right: 1.6em;
+}
+
+.header__nav_item a {
+    display: inline-block;
+    height: 7.2rem;
+    line-height: 7.2rem;
+    color: white;
+    padding: 0 0.8em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header__nav_item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: white;
+    transition: all 350ms;
+}
+
+.header__nav_item:hover::after {
+    left: 0;
+    width: 100%;
+    height: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+/* 
+.alarm {
+    display: none;
+} */
+
+/* .btn__alarm {
+    all: unset;
+    display: block;
+    width: 135.55px;    
+    height: 114.88px;
+    background-image: url("/images/bell.png");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+
+/* .btn__alarm:checked {
+    background-color: rgba(31, 115, 184, 0.619);
+}
+
+.btn__alarm:checked + .alarm {
+    display: inherit;
+    position: absolute;
+    top: 72px;
+    right: 0;
+    background-color: rgba(31, 115, 184, 1);
+    padding-bottom: 1em;
+    margin-top: 43px;
+    box-shadow: 0 2px 2px rgba(255, 255, 255, 0.06);
+} */
+
+/* .alarm_item {
+    width: 100px;
+    text-align: center;
+}
+
+.alarm_item a {
+    width: 100px;
+}
+
+.alarm_item:not(:last-child) {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+.intro__type {
+    padding: 0;
+    font-size: 49px;
+    color: rgb(49, 67, 13);
+}
+
+.alarm {
+    display: flex;
+    flex-direction: column;
+} */
+
+/* #alarm {
+    background-image: url("/images/bell.png") no-repeat;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;    
+} */
+
+.alarm {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url("/images/bell.png");
+    position: relative;
+    left: 100%;
+    border: 0.3rem solid black;
+}
+
+input[type='checkbox']:checked+label {
+    background-image: url("/images/bell.png") no-repeat
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+

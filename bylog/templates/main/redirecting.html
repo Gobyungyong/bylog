@@ -1,0 +1,29 @@
+{%extends 'base2.html'%}
+{%block content%}
+
+<div class="papa">
+
+    <div class="mama">
+        
+        <form method="post">
+            {{form.csrf_token}}
+            
+            <div class="headline">다른 BYlog 방문하기</div>
+            
+            {% include 'form_errors.html' %}
+            <div class="flex1">
+                <input placeholder="블로그코드를 입력하면 해당 블로그로 이동합니다." class="flexop" type="text" name="blog"/>
+            </div>
+                            
+            <div class="flex2">
+
+                <input class="flexop2" type="submit" value="이동하기"/>
+                                 
+            </div>
+
+        </form>    
+    
+    </div>      
+
+</div>
+{%endblock%}

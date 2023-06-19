@@ -1,0 +1,28 @@
+<header>
+    <h1>
+        <a class="header__homelink" href="{{url_for('main.index')}}">
+            <span class="header__logo">BYlog</span>
+        </a>
+    </h1>
+    {% if session['user_id'] %}
+    <nav class="header__nav">
+        <ul>              
+            <li class="header__nav_item">
+                <a href="{{url_for('main.redirecting',id=user.id)}}">이동하기</a>
+            </li>
+            {% if session['user_id'] == 1%}
+            <li class="header__nav_item">
+                <a href="{{url_for('auth.admin',id=user.id)}}">회원관리</a>
+            </li>
+            {%else%}
+            <li class="header__nav_item">
+                <a href="/auth/modify/{{user.id}}">정보수정</a>
+            </li>
+            {% endif %}
+            <li class="header__nav_item">
+                <a href="{{ url_for('auth.logout')}}">로그아웃</a>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+</header>   

@@ -1,0 +1,67 @@
+/* @import url(./basic_default.css); */
+@import url(./header.css);
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+table {
+    width: 100vw;
+    text-align: center;
+    font-size: 15px;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+.paging {
+    display: flex;
+    justify-content: center;
+}
+
+.paging ul {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    font-size: 20px;
+}
+
+.paging a {
+    text-decoration: none;
+    color: blue;
+}
+
+.current {
+    font-weight: bold;
+}
+
+.paging .disabled {
+    color: gray;
+    pointer-events: none;
+}

@@ -1,0 +1,268 @@
+@import url(./basic_default.css);
+@import url(./header.css);
+@import url(./diary.css);
+@import url(./diary_detail.css);
+@import url(./redirecting.css);
+@import url(./error.css);
+
+.bylogmain {
+    display: flex;
+    width: 100%;
+    background-color: rgb(227, 253, 253);
+}
+
+.profile {
+    width: 20vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.board {
+    width: 40vw;
+    border-left: 0.1rem dotted black;
+    border-right: 0.1rem dotted black;
+}
+
+.visit {
+    width: 40vw;
+}
+
+/* 프로필 */
+
+.image_container {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    height: 25vh;
+    width: 18vw;
+    border: 0.2rem solid rgb(17, 106, 123);
+    border-radius: 2%;
+    background-image: url(./img/BYlogo_long.PNG);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.intro {
+    height: 60vh;
+    max-height: 60vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    font-size: 2rem;
+    width: 20vw;
+    word-wrap: break-word;
+    padding: 0.5rem;
+    line-height: 3rem;
+}
+
+.intro::-webkit-scrollbar {
+    display: none;
+}
+
+.intro p {
+    font-weight: bold;
+    color: rgb(17, 106, 123);
+    text-align: center;
+}
+
+/* 게시판 */
+
+.board_h1 {
+    text-align: center;
+    border-bottom: 0.1rem dotted black;
+    height: 5rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+}
+
+.plus {
+    text-align: center;
+    width: 2rem;
+}
+
+.boardlist {
+    width: 100%;
+    height: 75vh;
+    font-size: 1.5rem;
+}
+
+.diary_table {
+    width: 100%;
+}
+
+td {
+    height: 6rem;
+}
+
+.table_top {
+    width: 100%;
+    height: 4rem;
+}
+
+th {
+    font-size: 1.5rem;
+    border-bottom: 0.1rem solid lightgray;
+}
+
+.diary_create_date {
+    width: 8vw;
+}
+
+.empty_span {
+    width: 2vw;
+}
+
+td[class^=diary], .diarty_subject {
+    text-align: center;
+}
+
+.page_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.paging {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.paging .disabled {
+    color: gray;
+    pointer-events: none;
+} 
+
+.current_page {
+    font-weight: bold;
+    pointer-events: none;
+    color: rgb(113, 201, 206);
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin-left: 2rem;
+    border: 0.1rem solid rgba(31, 115, 184, 0.619);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0px rgba(31, 115, 184, 0.82);
+    border-radius: 5%;
+    color: rgb(113, 201, 206);
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+#search_kw {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0.25rem solid rgba(31, 115, 184, 0.619);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0px rgba(31, 115, 184, 0.82);
+    border-radius: 5%;
+    width: 20rem;
+    height: 2.5rem;
+}
+
+#search_kw::placeholder {
+    text-align: center;
+    padding: 5px;
+}
+
+/* 방명록 */
+
+.visit_h1 {
+    text-align: center;
+    border-bottom: 0.1rem dotted black;
+    height: 5rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.visit_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    width: 80%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0.25rem solid rgba(31, 115, 184, 0.619);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0px rgba(31, 115, 184, 0.82);
+    resize: none;
+}
+
+#content:focus {
+    outline: none;
+}
+
+#content::placeholder {
+    text-align: center;
+    word-break: keep-all;
+    color: rgb(18, 97, 101);
+    padding-top: 6.5rem;
+}
+
+.visit_btn {
+    margin-left: 2rem;
+    border: 0.1rem solid rgba(31, 115, 184, 0.619);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0px rgba(31, 115, 184, 0.82);
+    border-radius: 5%;
+    color: rgb(113, 201, 206);
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    height: 15rem;
+}
+
+.scroll_box {
+    height: 60vh;
+    max-height: 60vh;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.scroll_box::-webkit-scrollbar {
+    display: none;
+}
+
+.guest_content_list {
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guest_content {
+    width: 80%;
+    padding: 1rem;
+    border: 0.2rem solid rgba(31, 115, 184, 0.619);
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+.guest_name {
+    margin-right: 1rem;
+}
+
+.guest_delete {
+    margin-left: 1.5rem;
+}

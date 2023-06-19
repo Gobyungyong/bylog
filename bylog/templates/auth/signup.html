@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='signup.css')}}">
+    <title>BYlog Signup</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="papa">
+
+        <div class="mama">
+            
+            <div class="headline">회원가입</div>
+            
+            <form method="post">
+                {{form.csrf_token}}
+                {%include 'form_errors.html'%}
+
+                <div class="flex1">
+                    <div>
+                        <label for="email"></label>
+                        <input 
+                            type="email" 
+                            class="flexop" 
+                            id="email" 
+                            name="email" 
+                            value="{{form.email.data or ''}}" 
+                            placeholder=" 이메일을 입력하세요."
+                        >
+                    </div>
+                    <div>
+                        <label for="username"></label>
+                        <input 
+                            type="text" 
+                            class="flexop" 
+                            id="username" 
+                            name="username" 
+                            value="{{form.username.data or ''}}"
+                             placeholder=" 이름을 입력하세요."
+                        >
+                    </div>
+                    <div>
+                        <label for="password1"></label>
+                        <input 
+                            type="password" 
+                            class="flexop" 
+                            id="password1" 
+                            name="password1" 
+                            value="{{form.password1.data or ''}}" 
+                            placeholder=" 비밀번호를 입력하세요."
+                        >
+                    </div>
+                    <div>
+                        <label for="password2"></label>
+                        <input 
+                            type="password" 
+                            class="flexop" 
+                            id="password2" 
+                            name="password2"
+                            value="{{form.password2.data or ''}}" 
+                            placeholder=" 비밀번호를 다시 입력하세요."
+                        >
+                    </div>
+                    <div>
+                        <label for="private_key"></label>
+                        <input 
+                            type="text" 
+                            class="flexop" 
+                            id="private_key" 
+                            name="private_key" 
+                            value="{{form.private_key.data or ''}}" 
+                            placeholder=" 블로그 코드를 입력하세요."
+                        >
+                    </div>
+                </div>
+
+                <div class="flex5">
+                    <button class="flexop3" type="submit">가입하기</button>
+                </div>
+
+            </form>    
+        
+        </div>      
+   
+    </div>
+    
+</body>
+</html>

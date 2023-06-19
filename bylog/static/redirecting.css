@@ -1,0 +1,56 @@
+.papa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-color: rgb(227, 253, 253);
+    width: 100%;
+}
+
+.mama {
+    border: 0.2rem outset rgba(31, 115, 184, 0.619);
+    width: 50rem;
+    padding: 5rem;
+    box-shadow: 0.2rem 0.3rem 0.5rem 0px rgba(31, 115, 184, 0.82);
+    border-radius: 3%;
+}
+
+.headline {
+    font-weight: bold;
+    color: rgba(7, 50, 84, 0.775);
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+.flex1 {
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    justify-content: space-around;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.flexop {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}
+
+.flexop::placeholder {
+    text-align: center;
+}
+
+.flex2 {
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.flexop2 {
+    border-radius: 2%;
+    width: 12rem;  
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px outset rgba(31, 115, 184, 0.619);
+}

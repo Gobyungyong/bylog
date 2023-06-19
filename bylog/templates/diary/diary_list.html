@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="board">
+    <h1 class="board_h1">
+    {%if user.id == session['user_id']%}
+        <span class="empty"></span>
+    {%endif%}
+        <span class="h1_">Development Diary</span>
+    {%if user.id == session['user_id']%}
+        <span class="plus"><a href="{{ url_for('diary.create') }}"> + </a></span>
+    {%endif%}
+    </h1>
+    {%if diary%}
+    <ul>
+        {%for diary_list in diary%}
+        <li><a href="{{url_for('diary.detail', diary_id = diary_list.id)}}">{{diary_list.subject}}</a></li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+</div>
+{% endblock %}

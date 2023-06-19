@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='modify.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'header!main.html' %}
+    <main>
+        <div class="papa">
+
+            <div class="mama">
+                
+                <div class="headline">회원정보수정</div>
+                
+                <form method="post">
+                    {{form.csrf_token}}
+                    {%include 'form_errors.html'%}
+                    <div class="flex1">
+                        <div>
+                            <label for="email"></label>
+                            <input 
+                                type="email" 
+                                disabled 
+                                style="background-color: rgb(201, 187, 187);" 
+                                class="flexop" 
+                                id="email" 
+                                name="email"  
+                                value="{{user.email}}"
+                            >
+                        </div>
+                        <div>
+                            <label for="username"></label>
+                            <input 
+                                type="text" 
+                                disabled 
+                                style="background-color: rgb(201, 187, 187);" 
+                                class="flexop" 
+                                id="username" 
+                                name="username"  
+                                value="{{user.username}}"
+                            >
+                        </div>
+                        <div>
+                            <label for="password1"></label>
+                            <input 
+                                type="password" 
+                                class="flexop" 
+                                id="password1" 
+                                name="password1"  
+                                placeholder=" 비밀번호를 입력하세요."
+                            />
+                        </div>
+                        <div>
+                            <label for="password2"></label>
+                            <input 
+                                type="password" 
+                                class="flexop" 
+                                id="password2" 
+                                name="password2"  
+                                placeholder=" 비밀번호를 다시 입력하세요."
+                                />
+                        </div>
+                        <div>
+                            <label for="private_key"></label>
+                            <input 
+                                type="text" 
+                                class="flexop" 
+                                id="private_key" 
+                                name="private_key" 
+                                value="{{user.private_key}}"  
+                                placeholder=" 블로그 코드를 입력하세요."
+                                />
+                        </div>
+                        <div>
+                            <label for="introduction"></label>
+                            <input 
+                                type="text" 
+                                class="flexop" 
+                                id="introduction" 
+                                name="introduction" 
+                                value="{{user.introduction}}"  
+                                placeholder=" 블로그 소개글을 입력하세요."
+                                />
+                        </div>
+                    </div>
+    
+                    <div class="flex5">
+                        <button class="flexop3" type="submit">수정하기</button>
+                    </div>
+    
+                </form>    
+            
+            </div>      
+       
+        </div>
+    </main>
+</body>
+</html>

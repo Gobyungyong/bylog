@@ -1,0 +1,71 @@
+{%extends 'base2.html'%}
+
+{%block content%}
+<div class="diary_detail_content_container">
+    <div class="diary_detail_subject"> 
+        <h1>{{ diary.subject }}</h1>
+        <div class="diary_detail_date_container">
+            <div>작성일시 : {{ diary.create_date|datetime }}</div>
+            {%if diary.modify_date %}
+            <div>수정일시 : {{ diary.modify_date|datetime }}</div>
+            {%endif%}
+        </div>
+    </div>
+    <div class="diary_detail_btn_container">
+        {%if g.user == diary.user or g.user.id == 1%}
+        <span><a href="{{url_for('diary.modify',diary_id=diary.id)}}">수정</a></span>
+        <span><a class='delete' data-uri="{{url_for('diary.delete',diary_id=diary.id)}}">삭제</a></span>
+        {%endif%}
+    </div>
+    <div class="diary_detail_content">
+        {{ diary.content|markdown }}
+    </div>
+    <div class="comment_create_form_container">
+        {%include 'form_errors.html'%}
+        <form class="comment_create_form" action="{{ url_for('comment.create', diary_id=diary.id) }}" method="post">
+            {{ form.csrf_token }}
+            <textarea name="content" id="comment_content" rows="5"></textarea>
+            <input class="comment_btn" type="submit" value="댓글등록">
+        </form>
+    </div>
+</div>
+
+<div class="comment_list_container">
+    <h2>{{ diary.comment_set|length }}개의 댓글이 있습니다.</h2>
+    <div class="comment_content_list">
+        <ul>
+        {% for comment in diary.comment_set %}
+            <li class="comment_content">
+                <div>
+                    {{comment.user_name}}
+                    
+                    {{ comment.create_date|datetime }}
+
+                    {%if g.user == diary.user or g.user.id == 1 or g.user.id == comment.user_id%}
+                    <span><a class='delete' data-uri="{{url_for('comment.delete',comment_id=comment.id)}}">삭제</a></span>
+                    {%endif%}
+                </div>
+                <br/>
+                {{ comment.content }}
+                
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{%endblock%}
+
+
+{%block script%}
+<script type="text/javascript">
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+{%endblock%}

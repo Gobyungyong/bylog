@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='login.css')}}">
+    <title>BYlog Login</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="papa">
+
+        <div class="mama">
+            
+            <form method="post">
+                {{form.csrf_token}}
+                
+                <div class="headline">로그인</div>
+                
+                {% include 'form_errors.html' %}
+                <div class="flex1">                   
+                        <label for="email"></label><input type="email" class="flexop" id="email" name="email" placeholder=" Email" value="{{ form.email.data or ''}}">                   
+                        <label for="password"></label><input type="password" class="flexop" id="password" name="password" placeholder=" Password" value="{{ form.password.data or ''}}">                  
+                </div>
+                                
+                <div class="flex2">
+
+                    <button type="submit" class="flexop2">로그인</button>
+                    
+                    <a href="{{url_for('auth.signup')}}" class="sign flexop2">회원가입</a>
+                     
+                </div>
+
+            </form>    
+        
+        </div>      
+   
+    </div>
+
+</body>
+</html>
