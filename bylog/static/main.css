@@ -42,7 +42,7 @@
     width: 18vw;
     border: 0.2rem solid rgb(17, 106, 123);
     border-radius: 2%;
-    background-image: url(https://cdn.discordapp.com/attachments/1120275207609913414/1120275352103698452/bylogo_long.PNG);
+    background-image: url('https://cdn.discordapp.com/attachments/1120275207609913414/1120275352103698452/bylogo_long.PNG');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
