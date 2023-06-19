@@ -10,6 +10,7 @@ bp = Blueprint('main', __name__, url_prefix='/')
     
 @bp.route('/')
 def index():
+    3/0
     if 'user_id' in session:
         id = session['user_id']
         return redirect(url_for('main.bylog', id=id))
